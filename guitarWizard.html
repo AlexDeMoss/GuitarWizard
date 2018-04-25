@@ -1,0 +1,49 @@
+<html>
+<head>
+  <title>Guitar Wizard (Rex & Heinrich)</title>
+  <style>
+  	body{
+  		margin: 0;
+  		overflow: hidden;
+    }
+    canvas{
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+  <script src="three.js"></script>
+  <script>
+      //RENDERER ---------------------------------------------------------------
+      var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('myCanvas'), antialias: true});
+      renderer.setClearColor(0x5599FF); // sky blue
+      renderer.setPixelRatio(window.devicePixelRatio); // makes higher DPI displays render sharper image
+      renderer.setSize(window.innerWidth, window.innerHeight); // fill window with render
+      //CAMERA -----------------------------------------------------------------
+      var camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000); // FoV, ratio, start, end
+      // var camera = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 0.1, 3000);
+      //SCENE ------------------------------------------------------------------
+      var scene = new THREE.Scene(); // environment to be rendered
+      //LIGHTS -----------------------------------------------------------------
+      var light = new THREE.AmbientLight(0xFF0000, 0.75);
+      scene.add(light);
+      var light1 = new THREE.PointLight(0xFF6600, 0.75);
+      scene.add(light1);
+      //OBJECT -----------------------------------------------------------------
+      var geometry = new THREE.CubeGeometry(100, 100, 100);
+      var material = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
+      var mesh = new THREE.Mesh(geometry, material);
+      mesh.position.set(0, 0, -500);
+      scene.add(mesh);
+      //RENDER LOOP ------------------------------------------------------------
+      requestAnimationFrame(render);
+      function render() {
+          mesh.rotation.x += 0.01;
+          mesh.rotation.y += 0.01;
+          renderer.render(scene, camera);
+          requestAnimationFrame(render);
+      }
+  </script>
+</body>
+</html>

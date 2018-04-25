@@ -1,0 +1,43 @@
+
+/*
+    Created on : Jan 6, 2018, 12:29:18 PM
+    Author     : Marietta E. Cameron
+*/
+
+canvas {
+    border:#0000FF 1px solid;
+}
+h1 {
+    color: #0000FF;
+    text-shadow: 2px 2px 3px grey;
+}/* h1 */
+h2 {
+    color: #0000FF;
+}/* h2 */
+p {
+    font-family: verdana;
+    font-size: 20px;
+}/* p */
+
+.projectClass {
+    float: left;
+    width: 45%;
+}/* projectClass */
+.coorClass {
+    float: left;
+    width: 100%;
+}/* coorClass */
+
+.overviewClass {
+    float: left;
+    width: 55%;
+}/* objectiveClass */
+/* Responsive layout - if width is less than 1000px send objective class full width*/
+@media (max-width: 1000px) {
+    .overviewClass{
+        width: 100%;
+    }
+}
+table, th, td {
+    border: 1px solid black;
+}
